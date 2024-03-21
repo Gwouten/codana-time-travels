@@ -1,12 +1,17 @@
 import { useEffect, useState } from 'react'
 import { fetchNews } from './http';
+import { dummyData } from './dummy-data';
+
 import './App.css'
 
-const today = new Date().toISOString();
-const INITIAL_PARAMETERS = `from=${today}`;
+import Header from './components/Header/Header';
+import ArticleList from './components/ArticleList/ArticleList';
+import { convertDateToDdMmYyyy } from './helpers';
+
+const today = new Date();
+const INITIAL_PARAMETERS = `q=internet&from=${today.toISOString()}`;
 
 function App() {
-  // state for http calls
   const [isLoading, setIsLoading] = useState(false);
   const [articles, setArticles] = useState([]);
   const [error, setError] = useState();
@@ -20,6 +25,8 @@ function App() {
       setArticles(fetchedArticles.articles);
     } catch (error) {
       setError(error.message);
+      // load dummy articles for when you reach your request limit => ADD CACHING!!
+      setArticles(dummyData.articles);
     }
 
     setIsLoading(false);
@@ -44,19 +51,15 @@ function App() {
 
   return (
     <>
-      <h1>Codana Time Travels</h1>
-      <button onClick={handleFetchArticlesButton}>Fetch news</button>
-      { isLoading && <p>Travelling through time...</p>}
-      {
-        articles.map(({ author, content, description, publishedAt, source, title, url, urlToImage }) => {
-          return (
-            <article key={source.id+publishedAt+author}>
-              <img src={urlToImage} alt={description} />
-              <header>{title}</header>
-            </article>
-          );
-        })
-      }
+      <Header title="Codana Time Travels"></Header>
+
+      {/* <button onClick={handleFetchArticlesButton}>Fetch news</button> */}
+      <ArticleList
+        articles={articles}
+        date={convertDateToDdMmYyyy(today)}
+        isLoading={isLoading}
+        loadingMessage="Travelling through time..."
+      />
       { error && <p>{error}</p> }
     </>
   )
