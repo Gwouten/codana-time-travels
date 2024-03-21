@@ -21,3 +21,11 @@ Then start the project by running:
 npm run dev
 ```
 Ctrl+click on the link to open the project in your browser.
+
+## Get API key from News API
+To get data, the News api is used (https://newsapi.org/). In order to make http request to this api, you will need to create an account and obtain an api key. Once you have a key, you will need to create a file called `api-keys.js` in the `src` folder and export a variable called `newsApiKey`:
+
+```javascript
+// src/api-key.js
+export const newsApiKey = 'your-api-key-goes-here';
+```
