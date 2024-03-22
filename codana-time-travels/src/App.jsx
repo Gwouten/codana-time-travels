@@ -8,8 +8,8 @@ import Header from './components/Header/Header';
 import ArticleList from './components/ArticleList/ArticleList';
 import { convertDateToDdMmYyyy } from './helpers';
 
-const today = new Date();
-const INITIAL_PARAMETERS = `q=internet&from=${today.toISOString()}`;
+const today = new Date('2024-02-25');
+const INITIAL_PARAMETERS = `q=trump&from=${today.toISOString()}`;
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);

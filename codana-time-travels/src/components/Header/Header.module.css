@@ -1,6 +1,6 @@
 .header {
-    background: rgb(34,212,183);
-    background: linear-gradient(90deg, rgba(34,212,183,1) 0%, rgba(18,164,141,1) 89%);
+    background: var(--light-primary);
+    background: linear-gradient(90deg, var(--light-primary) 0%, var(--light-secondary) 89%);
     padding: 1rem 0.5rem 1.5rem 0.5rem;
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
     display: flex;

@@ -1,12 +1,18 @@
 import styles from './ArticleListItem.module.css';
 
-export default function ArticleListItem({ title, description }) {
+export default function ArticleListItem({ title, description, imgurl, source, author }) {
+    console.log(imgurl);
     return (
-        <article className={styles.article}>
-            <header>
+        <li className={styles.listItem}>
+            <article className={styles.article}>
+                <img src={imgurl} className={styles.img} />
+                <section className={styles.credits}>
+                    <p className={styles.sourceLabel}>Provided by <span className={styles.source}>{source}</span></p>    
+                    { author && <p className={styles.sourceLabel}>Written by <span className={styles.source}>{author}</span></p> }
+                </section>
                 <h3 className={styles.title}>{title}</h3>
-            </header>
-            <p className={styles.description}>{description}</p>
-        </article>
+                <p className={styles.description}>{description}</p>
+            </article>
+        </li>
     );
 };

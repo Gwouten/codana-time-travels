@@ -16,12 +16,14 @@ export default function ArticleList({ articles, date, isLoading, loadingMessage 
             {
                 articles.map((article) => {
                     return (
-                        <li key={article.source.id+article.publishedAt+article.author}>
-                            <ArticleListItem
-                                title={article.title}
-                                description={article.description}
-                            />
-                        </li>
+                        <ArticleListItem
+                            key={article.source.id+article.publishedAt+article.author}
+                            title={article.title}
+                            description={article.description}
+                            imgurl={article.urlToImage} 
+                            source={article.source.name}
+                            author={article.author}
+                        />
                     );
                 })
             }

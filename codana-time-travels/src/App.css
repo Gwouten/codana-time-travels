@@ -4,6 +4,13 @@
 :root {
   /* COLORS */
   --text-color-light: #fefefe;
+  --light-primary: #22d4b7;
+  --light-secondary: #12a48d;
+
+  --black-20: rgba(0,0,0,0.2);
+  --black-50: rgba(0,0,0,.5);
+  --black-70: rgba(0,0,0,.7);
+  --black-100: rgba(0,0,0,1);
 
   /* FONTS */
   --font-pixel: "Silkscreen", sans-serif;
@@ -11,7 +18,7 @@
   --font-title-slab: "Montagu Slab", serif;
 }
 
-h1, h2 {
+h1, h2, h3, p {
   margin: 0;
 }
 
