@@ -1,7 +1,6 @@
 import styles from './ArticleListItem.module.css';
 
 export default function ArticleListItem({ title, description, imgurl, source, author }) {
-    console.log(imgurl);
     return (
         <li className={styles.listItem}>
             <article className={styles.article}>
