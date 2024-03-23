@@ -1,0 +1,45 @@
+.link {
+    font-family: var(--font-pixel);
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--black-100);
+    background-color: var(--text-color-light);
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+}
+
+.article {
+    padding: 1rem;
+}
+
+.title {
+    font-family: var(--font-body-sans);
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    margin-bottom: 1rem;
+}
+
+.article img {
+    width: calc(100% + 2rem);
+    margin: 1rem 0 1rem -1rem;
+    margin-left: -1rem;
+}
+
+.article main {
+    font-family: var(--font-body-sans);
+    color: var(--black-70);
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+.article a[href^=http] {
+    display: flex;
+    background-color: var(--light-primary);
+    color: var(--text-color-light);
+    font-family: var(--font-pixel);
+    position: relative;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+}

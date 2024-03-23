@@ -1,18 +1,15 @@
-import { useEffect, useState } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { fetchNews } from './http';
-import { dummyData } from './dummy-data';
 
 import './App.css'
 
-import Header from './components/Header/Header';
 import ArticleList from './components/ArticleList/ArticleList';
 import Article from './components/Article/Article';
-import { convertDateToDdMmYyyy } from './helpers';
 import Root from './components/Root/Root';
+import { loader as allArticlesLoader } from './components/ArticleList/ArticleList';
+import { loader as singleArticleLoader } from './components/Article/Article';
+import { convertDateToDdMmYyyy } from './helpers';
 
 const today = new Date('2024-02-25');
-const INITIAL_PARAMETERS = `q=trump&from=${today.toISOString()}`;
 const router = createBrowserRouter([
   {
     path: '/',
@@ -22,14 +19,12 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <ArticleList emptyListMessage="Such empty..." date={convertDateToDdMmYyyy(today)}/>,
-        loader: async () => {
-          const articles = await fetchNews(INITIAL_PARAMETERS);
-          return articles;
-        }
+        loader: allArticlesLoader
       },
       {
-        path: 'article/:articleId',
-        element: <Article />
+        path: 'article/:articleTitle',
+        element: <Article />,
+        loader: singleArticleLoader
       }
     ]
   }
