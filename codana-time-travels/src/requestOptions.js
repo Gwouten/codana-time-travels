@@ -1,10 +1,10 @@
 export const searchIn = [
     'title',
-    'descroption',
+    'description',
     'content'
 ];
 
-export const language = [
+export const languages = [
     'ar',
     'de',
     'en',

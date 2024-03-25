@@ -1,38 +1,37 @@
 import { fetchNews } from '../../http';
 import styles from './ArticleList.module.css';
 import ArticleListItem from "./ArticleListItem/ArticleListItem";
-import { Link, useLoaderData } from 'react-router-dom';
+import { useParams, useRouteLoaderData } from 'react-router-dom';
+import dayjs from 'dayjs';
 
-const today = new Date('2024-02-25');
-const INITIAL_PARAMETERS = `q=trump&from=${today.toISOString()}`;
+export const loader = async ({ params }) => fetchNews(params.articlesQuery);
 
-export const loader = async () => fetchNews(INITIAL_PARAMETERS);
-
-export default function ArticleList({ emptyListMessage, date }) {
-    const {totalResults, articles = []} = useLoaderData();
-    
-    if (!articles.length) {
-        return <p className={styles.loading}>{emptyListMessage}</p>
-    }
+export default function ArticleList({ emptyListMessage }) {
+    const { articlesQuery } = useParams();
+    const date = dayjs(articlesQuery.match(/\d{4}-\d{2}-\d{2}/g)).format('DD/MM/YYYY');
+    const { articles = [] } = useRouteLoaderData('articles');
     
     return (
         <section className={styles.articleList}>
-        <h2 className={styles.listTitle}>
-        <span className={styles.light}>Articles published on</span><br/>
-        {date}
-        </h2>
-        <ul className={styles.list}>
-        {
-            articles.map((article, index) => {
-                return (
-                    <ArticleListItem
-                    key={article.title}
-                    title={article.title}
-                    description={article.description}
-                    imgurl={article.urlToImage} 
-                    source={article.source.name}
-                    author={article.author}
-                    />
+            <h2 className={styles.listTitle}>
+                <span className={styles.light}>Articles published on</span><br/>
+                {date}
+            </h2>
+            { 
+                !articles.length && <p className={styles.loading}>{emptyListMessage}</p>
+            }
+            <ul className={styles.list}>
+            {
+                articles.map((article, index) => {
+                    return (
+                        <ArticleListItem
+                            key={article.title+index}
+                            title={article.title}
+                            description={article.description}
+                            imgurl={article.urlToImage} 
+                            source={article.source.name}
+                            author={article.author}
+                        />
                     );
                 })
             }

@@ -2,14 +2,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import './App.css'
 
-import ArticleList from './components/ArticleList/ArticleList';
 import Article from './components/Article/Article';
 import Root from './components/Root/Root';
-import { loader as allArticlesLoader } from './components/ArticleList/ArticleList';
-import { loader as singleArticleLoader } from './components/Article/Article';
-import { convertDateToDdMmYyyy } from './helpers';
+import ArticleList, { loader as allArticlesLoader } from './components/ArticleList/ArticleList';
 
-const today = new Date('2024-02-25');
 const router = createBrowserRouter([
   {
     path: '/',
@@ -17,14 +13,20 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       {
-        index: true,
-        element: <ArticleList emptyListMessage="Such empty..." date={convertDateToDdMmYyyy(today)}/>,
-        loader: allArticlesLoader
-      },
-      {
-        path: 'article/:articleTitle',
-        element: <Article />,
-        loader: singleArticleLoader
+        path: 'articles',
+        id: 'articles',
+        loader: allArticlesLoader,
+        children: [
+          {
+            index: true,
+            path: ':articlesQuery',
+            element: <ArticleList />,
+          },
+          {
+            path: ':articlesQuery/:articleTitle',
+            element: <Article />,
+          }
+        ]
       }
     ]
   }
@@ -32,7 +34,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <RouterProvider router={router} />
+    <RouterProvider router={router} fallbackElement={<p>Loading...</p>}/>
   )
 }
 

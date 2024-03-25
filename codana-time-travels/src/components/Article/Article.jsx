@@ -1,19 +1,23 @@
 import styles from './Article.module.css';
-import { Link, useLoaderData, useParams } from 'react-router-dom';
-import { fetchArticle } from '../../http';
+import { Link, useParams, useRouteLoaderData } from 'react-router-dom';
 import Credits from '../Credits/Credits';
 
-export const loader = async ({ request, params}) => {
-    return fetchArticle(params.articleTitle);
-};
-
 export default function Article() {
-    const {articles} = useLoaderData();
-    const { author, content, publishedAt, source, title, url, urlToImage } = articles[0];
+    const { articles } = useRouteLoaderData('articles');
+    const { articleTitle } = useParams();
+    const {
+        author, 
+        content, 
+        publishedAt, 
+        source, 
+        title, 
+        url, 
+        urlToImage 
+    } = articles.find((article) => article.title === articleTitle);
 
     return (
         <>
-            <Link to=".." className={styles.link}>&lt; Back</Link>
+            <Link to=".." className={styles.link} relative="path">&lt; Back</Link>
             <article className={styles.article}>
                 <h1 className={styles.title}>{title}</h1>
                 <Credits source={source.name} author={author} />

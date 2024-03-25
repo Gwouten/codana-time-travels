@@ -1,8 +1,5 @@
-export const convertDateToDdMmYyyy = (date) => {
-    const options = {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric'
-    };
-    return new Intl.DateTimeFormat(undefined, options).format(date);
-};
+import dayjs from 'dayjs';
+
+export const convertToSnakeCase = (string) => string.toLowerCase().replaceAll(' ', '_');
+
+export const today = dayjs().subtract(1, 'day');

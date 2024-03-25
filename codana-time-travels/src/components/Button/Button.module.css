@@ -1,0 +1,15 @@
+.button {
+    display: flex;
+    background-color: var(--light-primary);
+    color: var(--text-color-light);
+    font-family: var(--font-pixel);
+    position: relative;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+    border: none;
+    
+    &.secondary {
+        background-color: var(--light-secondary);
+    }
+}
