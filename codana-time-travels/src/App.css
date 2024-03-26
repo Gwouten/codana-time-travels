@@ -16,6 +16,9 @@
   --font-pixel: "Silkscreen", sans-serif;
   --font-body-sans: "Afacad", sans-serif;
   --font-title-slab: "Montagu Slab", serif;
+
+  /* SHADOW */
+  --box-shadow: 0 0.125rem 0.5rem var(--black-20);
 }
 
 h1, h2, h3, p {

@@ -1,3 +1,40 @@
-.required {
+.inputGroup {
+    position: relative;
+    margin-bottom: 0.5rem;
     
+    label {
+        color: var(--text-color-light);
+        font-family: var(--font-body-sans);
+        left: 0.25rem;
+        position: absolute;
+    }
+    
+    input, select {
+        color: var(--text-color-light);
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid var(--text-color-light);
+        font-family: var(--font-body-sans);
+        height: 1.75rem;
+        text-align: right;
+        width: 100%;
+        font-size: 1.2rem;
+        display: flex;
+        
+        &:focus-visible {
+            background-color: var(--black-20);
+            outline: none;
+        }
+    }
+
+    select {
+        option {
+            text-align: right;
+        }
+    }
+    
+    .required {
+        display: inline-block;
+        translate: 0 3px;        
+    }
 }

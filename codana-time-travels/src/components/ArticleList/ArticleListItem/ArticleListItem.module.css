@@ -1,6 +1,6 @@
 .listItem {
     padding: 0.5rem;
-    box-shadow: 0 0.125rem 0.5rem var(--black-20);
+    box-shadow: var(--box-shadow);
 }
 
 .article {

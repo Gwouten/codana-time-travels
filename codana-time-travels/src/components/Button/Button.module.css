@@ -5,11 +5,38 @@
     font-family: var(--font-pixel);
     position: relative;
     padding: 0.5rem 1rem;
-    margin-top: 1rem;
+    margin: 0;
     justify-content: center;
     border: none;
+    width: 100%;
     
-    &.secondary {
+    &.dark {
         background-color: var(--light-secondary);
+    }
+    
+    &.close {
+        background-color: var(--light-secondary);
+        position: absolute;
+        font-size: 1.3rem;
+        top: 0;
+        right: 0;
+        padding: 0;
+        width: 30px;
+        height: 30px;
+        border-top-right-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+    }
+
+    &.open {
+        position: absolute;
+        top: 50%;
+        translate: 0 -50%;
+        z-index: 0;
+        border-top-right-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+        font-size: 1.3rem;
+        margin: 0;
+        padding: 0 0.25rem;
+        width: 30px;
     }
 }
