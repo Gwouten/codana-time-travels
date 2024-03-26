@@ -1,6 +1,6 @@
 import styles from './Button.module.css';
 
-export default function({mode, children, type, ...props}) {
+export default function({mode, children, type, hide = false, ...props}) {
     let classes = styles.button;
 
     if (mode === 'dark') {
@@ -13,6 +13,10 @@ export default function({mode, children, type, ...props}) {
 
     if (mode === 'open') {
         classes += ' '+styles.open;
+    }
+
+    if (hide) {
+        classes += ' '+styles.hide;
     }
 
     return (

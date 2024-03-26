@@ -1,0 +1,7 @@
+@media screen and (min-width: 769px) {
+    .root {
+        display: grid;
+        grid-template-columns: 1fr minmax(768px, 1200px) 1fr;
+        grid-template-rows: 1fr;
+    }    
+}

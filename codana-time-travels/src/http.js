@@ -28,7 +28,8 @@ export const fetchNews = async (parameters) => {
     const resData = await response.json();
     
     if (!response.ok) {
-        return json({ message: `Failed to fetch articles.`});
+        console.log(response);
+        throw new Error({ message: 'An error occurred.', status: response.status});
     }  
     
     // cache data using parameters as name in localStorage => the same parameters would fetch the same data anyway since the data is static.

@@ -38,3 +38,9 @@
         translate: 0 3px;        
     }
 }
+
+@media screen and (min-width: 769px) {
+    .inputGroup {
+        margin-bottom: 0;
+    }
+}

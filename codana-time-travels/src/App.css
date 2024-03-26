@@ -19,6 +19,12 @@
 
   /* SHADOW */
   --box-shadow: 0 0.125rem 0.5rem var(--black-20);
+
+  /* TIMINGS */
+
+  --transition-fast: 0.2s;
+  --transition-medium: 0.4s;
+  --transition-slow: 0.8s;
 }
 
 h1, h2, h3, p {

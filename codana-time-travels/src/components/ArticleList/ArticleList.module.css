@@ -6,6 +6,7 @@
 
 .articleList {
     padding: 1rem;
+    transition: filter var(--transition-medium), opacity var(--transition-medium);
 }
 
 .list {
@@ -17,17 +18,55 @@
 }
 
 .listTitle {
-    font-family: var(--font-title-slab);
+    font-family: var(--font-body-sans);
+    font-weight: 100;
     text-align: center;
-    font-size: 2rem;
     line-height: 1;
     border-bottom: 3px solid black;
     padding-bottom: 1rem;
+    font-weight: 100;
+    font-size: 1.2rem;
 }
 
-.light {
-    font-weight: 100;
-    font-size: 1rem;
+.bold {
+    font-weight: 900;
+}
+
+.date {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-weight: 900;
+    font-size: 2rem;
+    font-family: var(--font-title-slab);
+}
+
+.blur {
+    filter: blur(5px);
+    opacity: 0.6;
+}
+
+@media screen and (min-width: 769px) {
+    .articleList {
+        grid-column: 2 / 3;
+        filter: none;
+        opacity: 1;
+        
+        .list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+        }
+    }
+}
+
+@media screen and (min-width: 981px) {
+    .articleList {
+
+        .list {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }    
+    }
 }
 
 @keyframes pulse {

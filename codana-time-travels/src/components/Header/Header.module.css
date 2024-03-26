@@ -6,21 +6,23 @@
     display: flex;
     justify-content: center;
     gap: 0.5rem;
-}
-
-.title {
-    font-family: "Silkscreen", sans-serif;
-    font-weight: 400;
-    color: var(--text-color-light);
-    font-size: 1.2rem;
-}
-
-.bold {
-    font-weight: 700;
+    
+    h1 {
+        font-family: "Silkscreen", sans-serif;
+        font-weight: 400;
+        color: var(--text-color-light);
+        font-size: 1.2rem;
+    }
 }
 
 .cursor {
     animation: blink 0.5s alternate infinite;
+}
+
+@media screen and (min-width: 769px) {
+    .header {
+        grid-column: 1 / 4;
+    }
 }
 
 @keyframes blink {
