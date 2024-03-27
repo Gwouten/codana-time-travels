@@ -7,11 +7,8 @@ import { languages } from '../../../requestOptions';
 import dayjs from 'dayjs';
 
 import styles from './TimeTravelDestination.module.css';
-import { useState } from "react";
 
 export default function TimeTravelDestination({today = dayjs(), formIsOpen, onSubmitUserInput}) {
-    const navigate = useNavigate();
-
     const minDate = today.subtract(1, 'month').format('YYYY-MM-DD');
     const maxDate = today.format('YYYY-MM-DD');
 
@@ -25,18 +22,21 @@ export default function TimeTravelDestination({today = dayjs(), formIsOpen, onSu
         const formData = new FormData(event.target);
         const {search_for, date, language} = Object.fromEntries(formData.entries());
         const queryParams = `q=${search_for}&language=${language}&from=${date}&to=${date}`;
-        navigate(`articles/${queryParams}`);
-        onSubmitUserInput();
+        onSubmitUserInput(false, queryParams);
     };
 
     const handleCloseClick = (event) => {
         event.preventDefault();
-        onSubmitUserInput();
+        onSubmitUserInput(false);
     };
+
+    const handleOpenClick = () => {
+        onSubmitUserInput(true);
+    }
 
     return (
         <>
-            <Button onClick={handleCloseClick} mode="open" hide={formIsOpen}>&#x2192;</Button>
+            <Button onClick={handleOpenClick} mode="open" hide={formIsOpen}>&#x2192;</Button>
             <section className={formWrapperStyles}>
                 <h2 className={styles.formTitle}><span>Where</span> When would you like to go?</h2>
                 <form className={styles.form} onSubmit={handleSubmit} mode="close">

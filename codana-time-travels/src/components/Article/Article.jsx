@@ -1,9 +1,9 @@
 import styles from './Article.module.css';
-import { Link, useOutletContext, useParams, useRouteLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useOutletContext, useParams } from 'react-router-dom';
 import Credits from '../Credits/Credits';
 
 export default function Article() {
-    const { articles } = useRouteLoaderData('articles');
+    const { articles } = useLoaderData();
     const { articleTitle } = useParams();
     const {
         author, 

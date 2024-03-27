@@ -13,12 +13,7 @@ const ENDPOINTS = {
     topHeadlines: 'top-headlines'
 };
 
-export const INITIAL_PARAMETERS = `q=trump&from=2024-03-19`;
-
-export const fetchNews = async (parameters) => {    
-    if (!parameters) {
-        parameters = INITIAL_PARAMETERS;
-    }
+export const fetchNews = async (parameters= `q=trump&from=2024-03-19`) => {    
     // the same parameters would fetch the same data anyway and the data is static, so get it from localStorage instead of making another call for the same data.
     if (localStorage.getItem(parameters)) {
         return JSON.parse(localStorage.getItem(parameters));

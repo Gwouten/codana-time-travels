@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 import Header from "../Header/Header";
 import TimeTravelDestination from "../Forms/TimeTravelDestination/TimeTravelDestination";
@@ -9,9 +9,13 @@ import styles from './Root.module.css';
 
 export default function Root() {
     const [formIsOpen, setFormIsOpen] = useState(true)
+    const navigate = useNavigate();
 
-    const handleSubmitUserInput = () => {
-        setFormIsOpen((prevState) => !prevState);
+    const handleSubmitUserInput = (value, queryParams) => {
+        setFormIsOpen(value);
+        if (queryParams) {
+            navigate(`articles/${queryParams}`);
+        }
     };
 
     return (

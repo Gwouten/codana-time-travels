@@ -11,18 +11,19 @@ const router = createBrowserRouter([
     path: '/',
     element: <Root />,
     errorElement: <Error />,
+    loader: allArticlesLoader,
     children: [
       {
         path: 'articles',
-        id: 'articles',
-        loader: allArticlesLoader,
         children: [
           {
             index: true,
+            loader: allArticlesLoader,
             path: ':articlesQuery',
             element: <ArticleList />,
           },
           {
+            loader: allArticlesLoader,
             path: ':articlesQuery/:articleTitle',
             element: <Article />,
           }
