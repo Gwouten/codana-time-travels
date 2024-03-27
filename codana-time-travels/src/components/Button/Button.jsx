@@ -20,6 +20,6 @@ export default function({mode, children, type, hide = false, ...props}) {
     }
 
     return (
-        <button className={classes} type={type} onClick={props.onClick}>{children}</button>
+        <button id={props.id} className={classes} type={type} onClick={props.onClick}>{children}</button>
     );
 };

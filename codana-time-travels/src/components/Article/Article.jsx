@@ -22,7 +22,6 @@ export default function Article() {
 
     return (
         <>
-            <Link to=".." className={styles.link} relative="path">&lt; Back</Link>
             <article className={articleStyles}>
                 <h1 className={styles.title}>{title}</h1>
                 <section className={styles.credits}>
@@ -30,7 +29,10 @@ export default function Article() {
                 </section>
                 <img src={urlToImage} />
                 <main>{content}</main>
-                <a href={url}>Read full article here</a>
+                <section className={styles.actions}>
+                    <a href={url}>Read full article here</a>
+                    <Link to=".." className={styles.link} relative="path">&lt; Back</Link>
+                </section>
             </article>
         </>
     );

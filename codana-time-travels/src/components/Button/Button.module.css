@@ -47,3 +47,11 @@
         translate: -105% 0;
     }
 }
+
+@media screen and (min-width: 769px) {
+    .button {
+        &.open {
+            display: none;
+        }
+    }
+}
